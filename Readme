@@ -1,0 +1,23 @@
+本文件是PVANet的运行demo（C++版本）
+@Mordekaiser 2017.2.9
+参考资料：楼燚(yì)航的blog，http://www.cnblogs.com/louyihang-loves-baiyan/
+---------------------------------------------------------------------------------------
+首先修改MakeLists.txt：
+1. 第15，16,17，27,28行，将该目录位置替换为自己对应的目录所在位置
+2. 在pva-faster-rcnn/lib/nms/目录下，找到gpu_nms.so(如果没有，那就先编译一下pva-faster-rcnn)，
+复制该文件，并将其重命名为libgpu_nms.so
+3. 其他目录可能根据自己的安装位置会有一些变化，自行替换即可，通常无需替换
+
+添加到PYTHONPATH：
+1. cd ~
+2. sudo gedit .bashrc
+3.在文件末尾添加如下两行(注意目录位置根据自己情况进行替换)：
+export PYTHONPATH=$PYTHONPATH:/home/mordekaiser/pva-faster-rcnn/lib
+export PYTHONPATH=$PYTHONPATH:/home/mordekaiser/pva-faster-rcnn/caffe-fast-rcnn/python
+
+编译：
+1. cd pva-demo
+2. cmake .
+3. make -j5
+4. ./pva_demo
+
